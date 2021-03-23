@@ -16,8 +16,10 @@ class Main extends Component {
   render() {
     const renderSession = ({ item }) => {
       return (
-        <Card title={`${item.month}-${item.day}-${item.year}`}>
-          <Text>{item.instructor}</Text>
+        <Card title={item.date}>
+          <Text>
+            {item.type} with {item.instructor}
+          </Text>
         </Card>
       );
     };

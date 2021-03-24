@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
-import { Card, Badge } from "react-native-elements";
+import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import { Badge } from "react-native-elements";
+import { LinearGradient } from "expo-linear-gradient";
 
 export const SessionComponent = ({ sessions }) => {
   const renderSession = ({ item }) => {
@@ -51,19 +52,35 @@ export const SessionComponent = ({ sessions }) => {
     const sessionDate = `${sessionMonth} ${sessionDay}, 2020  -  ${sessionTime}`;
 
     return (
-      <Card title={sessionDate}>
-        <View style={styles.cardBody}>
-          <Badge value={item.capacity} status="success" />
-          <Text style={styles.cardBodyText}>
-            {item.type} w/{item.instructor}
-          </Text>
-        </View>
-      </Card>
+      <View style={styles.sessionView}>
+        <LinearGradient
+          colors={["black", "#D70000", "black"]}
+          locations={[0.4, 0.6, 0.8]}
+        >
+          <View style={styles.sessionHeader}>
+            <Text style={styles.sessionHeaderText}>{sessionDate}</Text>
+            <Badge
+              value={item.capacity}
+              constainerStyle={{ position: "absolute", top: 8, right: 5 }}
+              status="success"
+            />
+          </View>
+          <Text style={styles.sessionBodyText}>{item.type}</Text>
+        </LinearGradient>
+      </View>
     );
   };
 
   return (
-    <View>
+    <View style={styles.sessionComponent}>
+      <Image
+        style={styles.backgroundImage}
+        source={require("../assets/fence.jpg")}
+      />
+      <Text style={styles.sessionComponentHeader}>
+        Tap on a session to reserve a spot
+      </Text>
+      <Text style={styles.sessionComponentHeader}>and for more info:</Text>
       <FlatList
         data={sessions}
         renderItem={renderSession}
@@ -74,12 +91,38 @@ export const SessionComponent = ({ sessions }) => {
 };
 
 const styles = StyleSheet.create({
-  cardBody: {
-    flexDirection: "row",
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    left: -200,
+    bottom: 0,
+    right: 0,
   },
-  cardBodyText: {
-    marginLeft: 10,
-    fontSize: 18,
+  sessionView: {
+    justifyContent: "center",
+    minWidth: 250,
+    margin: 10,
+  },
+  sessionHeader: {
+    flexDirection: "row",
+    flex: 1,
+  },
+  sessionHeaderText: {
+    fontSize: 20,
+    color: "white",
+  },
+  sessionBodyText: {
+    fontSize: 24,
+    color: "white",
+    textAlign: "center",
+  },
+  sessionComponent: {
+    flex: 1,
+    alignItems: "center",
+  },
+  sessionComponentHeader: {
+    color: "white",
+    fontSize: 24,
   },
 });
 

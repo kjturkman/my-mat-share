@@ -52,22 +52,17 @@ export const SessionComponent = ({ sessions }) => {
     const sessionDate = `${sessionMonth} ${sessionDay}, 2020  -  ${sessionTime}`;
 
     return (
-      <View style={styles.sessionView}>
-        <LinearGradient
-          colors={["black", "#D70000", "black"]}
-          locations={[0.4, 0.6, 0.8]}
-        >
-          <View style={styles.sessionHeader}>
-            <Text style={styles.sessionHeaderText}>{sessionDate}</Text>
-            <Badge
-              value={item.capacity}
-              constainerStyle={{ position: "absolute", top: 8, right: 5 }}
-              status="success"
-            />
-          </View>
-          <Text style={styles.sessionBodyText}>{item.type}</Text>
-        </LinearGradient>
-      </View>
+      <LinearGradient
+        style={styles.sessionView}
+        colors={["black", "#D70000"]}
+        locations={[0.3, 0.7]}
+      >
+        <View style={styles.sessionHeader}>
+          <Text style={styles.sessionHeaderText}>{sessionDate}</Text>
+          <Badge style={{ flex: 1 }} value={item.capacity} status="success" />
+        </View>
+        <Text style={styles.sessionBodyText}>{item.type}</Text>
+      </LinearGradient>
     );
   };
 
@@ -78,9 +73,8 @@ export const SessionComponent = ({ sessions }) => {
         source={require("../assets/fence.jpg")}
       />
       <Text style={styles.sessionComponentHeader}>
-        Tap on a session to reserve a spot
+        Tap on a session to reserve a spot and for more info:
       </Text>
-      <Text style={styles.sessionComponentHeader}>and for more info:</Text>
       <FlatList
         data={sessions}
         renderItem={renderSession}
@@ -100,21 +94,27 @@ const styles = StyleSheet.create({
   },
   sessionView: {
     justifyContent: "center",
-    minWidth: 250,
-    margin: 10,
+    minWidth: 300,
+    margin: 5,
+    padding: 5,
+    borderRadius: 10,
   },
   sessionHeader: {
     flexDirection: "row",
     flex: 1,
+    alignItems: "center",
   },
   sessionHeaderText: {
     fontSize: 20,
     color: "white",
+    flex: 7,
+    textAlign: "center",
   },
   sessionBodyText: {
     fontSize: 24,
-    color: "white",
+    fontWeight: "bold",
     textAlign: "center",
+    marginTop: 10,
   },
   sessionComponent: {
     flex: 1,
@@ -123,6 +123,8 @@ const styles = StyleSheet.create({
   sessionComponentHeader: {
     color: "white",
     fontSize: 24,
+    textAlign: "center",
+    marginBottom: 15,
   },
 });
 

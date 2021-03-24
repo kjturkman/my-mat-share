@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./HeaderComponent";
 import { MEMBERS } from "../Shared/members";
 import { SESSIONS } from "../Shared/sessions";
 import { View, Text, FlatList, StyleSheet } from "react-native";
@@ -73,16 +74,23 @@ class Main extends Component {
     };
 
     return (
-      <FlatList
-        data={this.state.sessions}
-        renderItem={renderSession}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      <View style={styles.container}>
+        <Header />
+        <FlatList
+          data={this.state.sessions}
+          renderItem={renderSession}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
   cardBody: {
     flexDirection: "row",
   },

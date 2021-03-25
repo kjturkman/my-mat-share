@@ -1,53 +1,54 @@
-import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import { Badge, ListItem } from "react-native-elements";
-import { LinearGradient } from "expo-linear-gradient";
+import React, { Component } from "react";
+import { FlatList, StyleSheet } from "react-native";
+import { ListItem } from "react-native-elements";
+import { SESSIONS } from "../Shared/sessions";
 
-function SessionComponent(props) {
-  const renderSession = ({ item }) => {
-    const date = item.date;
+class SessionComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sessions: SESSIONS,
+    };
+  }
 
-    let month = parseInt(date.substring(4, 6) - 1, 10);
-
-    let day = parseInt(date.substring(6, 8), 10);
-
-    let hours = parseInt(date.substring(9, 11), 10);
-
-    let minutes = parseInt(date.substring(12, 14), 10);
-
-    const d = new Date();
-    d.setMonth(month);
-    d.setDate(day);
-    d.setHours(hours);
-    d.setMinutes(minutes);
-
-    let cropDate = d.toString().substring(0, 10);
-    let cropTime = d.toString().substring(16, 21);
-    const sessionDate = `${cropDate}, ${cropTime}`;
-
-    return (
-      <ListItem
-        title={sessionDate}
-        subtitle={item.type}
-        onPress={() => props.onPress(item.id)}
-      />
-    );
+  static navigationOptions = {
+    title: "Sessions",
   };
 
-  return (
-    <FlatList
-      data={props.sessions}
-      renderItem={renderSession}
-      keyExtractor={(item) => item.id.toString()}
-    />
-  );
+  render() {
+    const { navigate } = this.props.navigation;
+    const renderSession = ({ item }) => {
+      const date = item.date;
+      let month = parseInt(date.substring(4, 6) - 1, 10);
+      let day = parseInt(date.substring(6, 8), 10);
+      let hours = parseInt(date.substring(9, 11), 10);
+      let minutes = parseInt(date.substring(12, 14), 10);
+      const d = new Date();
+      d.setMonth(month);
+      d.setDate(day);
+      d.setHours(hours);
+      d.setMinutes(minutes);
+      let cropDate = d.toString().substring(0, 10);
+      let cropTime = d.toString().substring(16, 21);
+      const sessionDate = `${cropDate}, ${cropTime}`;
+
+      return (
+        <ListItem
+          title={sessionDate}
+          subtitle={item.type}
+          onPress={() => navigate("SessionInfo", { sessionId: item.id })}
+        />
+      );
+    };
+
+    return (
+      <FlatList
+        data={this.state.sessions}
+        renderItem={renderSession}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    );
+  }
 }
 
 const styles = StyleSheet.create({

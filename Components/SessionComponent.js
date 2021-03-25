@@ -1,9 +1,16 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { Badge } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 
-export const SessionComponent = ({ sessions }) => {
+function SessionComponent(props) {
   const renderSession = ({ item }) => {
     const date = item.date;
 
@@ -26,17 +33,19 @@ export const SessionComponent = ({ sessions }) => {
     const sessionDate = `${cropDate}, ${cropTime}`;
 
     return (
-      <LinearGradient
-        style={styles.sessionView}
-        colors={["black", "#D70000"]}
-        locations={[0.3, 0.7]}
-      >
-        <View style={styles.sessionHeader}>
-          <Text style={styles.sessionHeaderText}>{sessionDate}</Text>
-          <Badge style={{ flex: 1 }} value={item.capacity} status="success" />
-        </View>
-        <Text style={styles.sessionBodyText}>{item.type}</Text>
-      </LinearGradient>
+      <TouchableOpacity>
+        <LinearGradient
+          style={styles.sessionView}
+          colors={["black", "#D70000"]}
+          locations={[0.3, 0.7]}
+        >
+          <View style={styles.sessionHeader}>
+            <Text style={styles.sessionHeaderText}>{sessionDate}</Text>
+            <Badge style={{ flex: 1 }} value={item.capacity} status="success" />
+          </View>
+          <Text style={styles.sessionBodyText}>{item.type}</Text>
+        </LinearGradient>
+      </TouchableOpacity>
     );
   };
 
@@ -50,13 +59,13 @@ export const SessionComponent = ({ sessions }) => {
         Tap on a session to reserve a spot and for more info:
       </Text>
       <FlatList
-        data={sessions}
+        data={props.sessions}
         renderItem={renderSession}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   backgroundImage: {

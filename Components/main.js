@@ -3,7 +3,7 @@ import Header from "./HeaderComponent";
 import { MEMBERS } from "../Shared/members";
 import { SESSIONS } from "../Shared/sessions";
 import { View, StyleSheet } from "react-native";
-import { SessionComponent } from "./SessionComponent.js";
+import SessionComponent from "./SessionComponent.js";
 
 class Main extends Component {
   constructor(props) {

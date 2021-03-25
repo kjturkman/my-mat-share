@@ -5,51 +5,25 @@ import { LinearGradient } from "expo-linear-gradient";
 
 export const SessionComponent = ({ sessions }) => {
   const renderSession = ({ item }) => {
-    let sessionMonth = item.date.substring(4, 6);
-    switch (sessionMonth) {
-      case "01":
-        sessionMonth = "JAN";
-        break;
-      case "02":
-        sessionMonth = "FEB";
-        break;
-      case "03":
-        sessionMonth = "MAR";
-        break;
-      case "04":
-        sessionMonth = "APR";
-        break;
-      case "05":
-        sessionMonth = "MAY";
-        break;
-      case "06":
-        sessionMonth = "JUN";
-        break;
-      case "07":
-        sessionMonth = "JUL";
-        break;
-      case "08":
-        sessionMonth = "AUG";
-        break;
-      case "09":
-        sessionMonth = "SEP";
-        break;
-      case "10":
-        sessionMonth = "OCT";
-        break;
-      case "11":
-        sessionMonth = "NOV";
-        break;
-      case "12":
-        sessionMonth = "DEC";
-        break;
-      default:
-        sessionMonth = "";
-        break;
-    }
-    const sessionDay = item.date.substring(6, 8);
-    const sessionTime = item.date.substring(9, 14);
-    const sessionDate = `${sessionMonth} ${sessionDay}, 2020  -  ${sessionTime}`;
+    const date = item.date;
+
+    let month = parseInt(date.substring(4, 6) - 1, 10);
+
+    let day = parseInt(date.substring(6, 8), 10);
+
+    let hours = parseInt(date.substring(9, 11), 10);
+
+    let minutes = parseInt(date.substring(12, 14), 10);
+
+    const d = new Date();
+    d.setMonth(month);
+    d.setDate(day);
+    d.setHours(hours);
+    d.setMinutes(minutes);
+
+    let cropDate = d.toString().substring(0, 10);
+    let cropTime = d.toString().substring(16, 21);
+    const sessionDate = `${cropDate}, ${cropTime}`;
 
     return (
       <LinearGradient

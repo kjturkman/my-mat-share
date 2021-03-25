@@ -5,6 +5,7 @@ export const SESSIONS = [
     type: "Kickboxing",
     instructor: "Coach Jeff",
     capacity: 12,
+    reservations: [0, 1, 2, 3, 4, 5, 6],
   },
   {
     id: 1,
@@ -12,13 +13,15 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     instructor: "Coach Zach",
     capacity: 12,
+    reservations: [3, 4, 5, 6, 7, 8, 9, 99],
   },
   {
     id: 2,
     date: "20210401T19:00:00",
     type: "Brazilian Jiu Jitsu",
     instructor: "Coach Omar",
-    capacity: 12,
+    capacity: 10,
+    reservations: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   },
   {
     id: 3,
@@ -26,6 +29,7 @@ export const SESSIONS = [
     type: "Kickboxing",
     instructor: "Coach Jeff",
     capacity: 12,
+    reservations: [0, 2, 4, 6, 8],
   },
   {
     id: 4,
@@ -33,13 +37,15 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     instructor: "Coach Zach",
     capacity: 12,
+    reservations: [1, 3, 5, 7, 9],
   },
   {
     id: 5,
     date: "20210402T19:00:00",
     type: "Brazilian Jiu Jitsu",
     instructor: "Coach Omar",
-    capacity: 12,
+    capacity: 10,
+    reservations: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   },
   {
     id: 6,
@@ -47,6 +53,7 @@ export const SESSIONS = [
     type: "Kickboxing",
     instructor: "Coach Jeff",
     capacity: 12,
+    reservations: [0, 1, 2],
   },
   {
     id: 7,
@@ -54,12 +61,14 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     instructor: "Coach Zach",
     capacity: 12,
+    reservations: [3, 4, 5],
   },
   {
     id: 8,
     date: "20210403T19:00:00",
     type: "Brazilian Jiu Jitsu",
     instructor: "Coach Omar",
-    capacity: 12,
+    capacity: 10,
+    reservations: [6, 7, 8, 9],
   },
 ];

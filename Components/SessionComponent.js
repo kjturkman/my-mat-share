@@ -1,18 +1,25 @@
 import React, { Component } from "react";
-import { FlatList, StyleSheet } from "react-native";
-import { ListItem } from "react-native-elements";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { SESSIONS } from "../Shared/sessions";
+import { MEMBERS } from "../Shared/members";
 
 class SessionComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sessions: SESSIONS,
+      members: MEMBERS,
     };
   }
 
   static navigationOptions = {
-    title: "Sessions",
+    title: "",
   };
 
   render() {
@@ -33,20 +40,30 @@ class SessionComponent extends Component {
       const sessionDate = `${cropDate}, ${cropTime}`;
 
       return (
-        <ListItem
-          title={sessionDate}
-          subtitle={item.type}
-          onPress={() => navigate("SessionInfo", { sessionId: item.id })}
-        />
+        <TouchableOpacity
+          onPress={() =>
+            navigate("SessionInfo", {
+              sessionId: item.id,
+              sessions: this.state.sessions,
+              members: this.state.members,
+            })
+          }
+        >
+          <Text>{sessionDate}</Text>
+          <Text>{item.type}</Text>
+        </TouchableOpacity>
       );
     };
 
     return (
-      <FlatList
-        data={this.state.sessions}
-        renderItem={renderSession}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      <View>
+        <Text>Upcoming Sessions</Text>
+        <FlatList
+          data={this.state.sessions}
+          renderItem={renderSession}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      </View>
     );
   }
 }

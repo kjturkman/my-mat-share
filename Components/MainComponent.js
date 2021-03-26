@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Platform } from "react-native";
+import { View, StyleSheet, Platform, Image } from "react-native";
 import SessionComponent from "./SessionComponent.js";
 import SessionInfo from "./SessionInfoComponent";
 import { createStackNavigator } from "react-navigation-stack";
@@ -15,11 +15,22 @@ const SessionsNavigator = createStackNavigator(
     initialRouteName: "SessionComponent",
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "#D80032",
+        backgroundColor: "black",
       },
+      headerBackground: (
+        <Image
+          style={{
+            width: 300,
+            height: 100,
+            resizeMode: "contain",
+            alignSelf: "center",
+          }}
+          source={require("../assets/catchlogo.jpg")}
+        />
+      ),
       headerTintColor: "#fff",
       headerTitleStyle: {
-        color: "black",
+        color: "fff",
       },
     },
   }
@@ -43,6 +54,10 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
     backgroundColor: "black",
     paddingBottom: 25,
+  },
+  headerImage: {
+    width: 300,
+    height: 100,
   },
 });
 

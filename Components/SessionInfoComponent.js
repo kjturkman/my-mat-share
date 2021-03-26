@@ -28,24 +28,16 @@ function RenderSession({ session, members }) {
 }
 
 class SessionInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sessions: SESSIONS,
-      members: MEMBERS,
-    };
-  }
-
   static navigationOptions = {
-    title: "Session Info",
+    title: "",
   };
 
   render() {
     const sessionId = this.props.navigation.getParam("sessionId");
-    const session = this.state.sessions.filter(
-      (session) => session.id === sessionId
-    )[0];
-    return <RenderSession session={session} members={this.state.members} />;
+    const sessions = this.props.navigation.getParam("sessions");
+    const members = this.props.navigation.getParam("members");
+    const session = sessions.filter((session) => session.id === sessionId)[0];
+    return <RenderSession session={session} members={members} />;
   }
 }
 

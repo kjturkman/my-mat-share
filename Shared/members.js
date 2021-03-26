@@ -60,7 +60,7 @@ export const MEMBERS = [
     rank: "black",
   },
   {
-    id: 99,
+    id: 10,
     firstName: "John",
     lastName: "Smith",
     rank: "white",

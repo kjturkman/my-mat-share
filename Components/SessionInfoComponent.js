@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { Card } from "react-native-elements";
-import { SESSIONS } from "../Shared/sessions";
-import { MEMBERS } from "../Shared/members";
 import MemberClassList from "./MemberClassListComponent";
 import CheckIn from "./CheckInComponent";
 
@@ -28,6 +26,9 @@ function RenderSession({ session, members }) {
 }
 
 class SessionInfo extends Component {
+  constructor(props) {
+    super(props);
+  }
   static navigationOptions = {
     title: "",
   };

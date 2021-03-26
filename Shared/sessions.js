@@ -13,7 +13,7 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     instructor: "Coach Zach",
     capacity: 12,
-    reservations: [3, 4, 5, 6, 7, 8, 9, 99],
+    reservations: [3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
     id: 2,

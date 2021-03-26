@@ -4,7 +4,6 @@ import SessionComponent from "./SessionComponent.js";
 import SessionInfo from "./SessionInfoComponent";
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 
 const SessionsNavigator = createStackNavigator(
   {

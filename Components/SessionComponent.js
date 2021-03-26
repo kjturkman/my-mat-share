@@ -8,14 +8,18 @@ import {
 } from "react-native";
 import { SESSIONS } from "../Shared/sessions";
 import { MEMBERS } from "../Shared/members";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    sessions: state.sessions,
+    members: state.members,
+  };
+};
 
 class SessionComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sessions: SESSIONS,
-      members: MEMBERS,
-    };
   }
 
   static navigationOptions = {
@@ -44,8 +48,8 @@ class SessionComponent extends Component {
           onPress={() =>
             navigate("SessionInfo", {
               sessionId: item.id,
-              sessions: this.state.sessions,
-              members: this.state.members,
+              sessions: this.props.sessions,
+              members: this.props.members,
             })
           }
         >
@@ -59,7 +63,7 @@ class SessionComponent extends Component {
       <View>
         <Text>Upcoming Sessions</Text>
         <FlatList
-          data={this.state.sessions}
+          data={this.props.sessions}
           renderItem={renderSession}
           keyExtractor={(item) => item.id.toString()}
         />
@@ -112,4 +116,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SessionComponent;
+export default connect(mapStateToProps)(SessionComponent);

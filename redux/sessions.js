@@ -6,10 +6,10 @@ export const Sessions = (state = SESSIONS, action) => {
     case ActionTypes.JOIN_CLASS:
       const newState = state.map((object) => {
         object.id === action.payload
-          ? { ...object, reservations: [...reservations, 10] }
+          ? { ...object, reservations: object.reservations.concat(10) }
           : object;
       });
-      return newState;
+      return state;
     default:
       return state;
   }

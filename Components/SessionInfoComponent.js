@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import { Card } from "react-native-elements";
 import MemberClassList from "./MemberClassListComponent";
 import CheckIn from "./CheckInComponent";
@@ -8,12 +8,9 @@ function RenderSession({ session, members }) {
   if (session) {
     return (
       <View>
-        <Card
-          featuredTitle={session.type}
-          image={require("../assets/catchlogo.jpg")}
-        >
-          <Text>{session.instructor}</Text>
-        </Card>
+        <Image source={require("../Shared/kickboxing.jpg")} />
+        <Text>{session.type}</Text>
+        <Text>{session.instructor}</Text>
         <CheckIn session={session} />
         <MemberClassList
           reservations={session.reservations}

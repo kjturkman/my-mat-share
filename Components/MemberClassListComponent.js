@@ -3,7 +3,9 @@ import { Text, View, FlatList } from "react-native";
 
 function MemberClassList({ reservations, members }) {
   const renderMember = ({ item }) => {
-    let member = members.filter((member) => member.id === item)[0];
+    let member = members.filter(
+      (member) => member.memberId === item.memberId
+    )[0];
 
     return (
       <View>

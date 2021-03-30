@@ -6,14 +6,13 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { SESSIONS } from "../Shared/sessions";
-import { MEMBERS } from "../Shared/members";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
     sessions: state.sessions,
     members: state.members,
+    reservations: state.reservations,
   };
 };
 
@@ -50,6 +49,7 @@ class SessionComponent extends Component {
               sessionId: item.id,
               sessions: this.props.sessions,
               members: this.props.members,
+              reservations: this.props.reservations,
             })
           }
         >

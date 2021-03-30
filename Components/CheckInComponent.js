@@ -5,9 +5,7 @@ import * as ActionTypes from "../redux/ActionTypes";
 
 const CheckIn = ({ session, reservations }) => {
   const dispatch = useDispatch();
-  if (!(session.capacity - reservations.length)) {
-    return <Text>Sorry, session is full!</Text>;
-  }
+
   if (reservations.filter((item) => item.memberId === "10")[0]) {
     return (
       <View>
@@ -23,6 +21,8 @@ const CheckIn = ({ session, reservations }) => {
         />
       </View>
     );
+  } else if (!(session.capacity - reservations.length)) {
+    return <Text>Sorry, session is full!</Text>;
   }
 
   return (

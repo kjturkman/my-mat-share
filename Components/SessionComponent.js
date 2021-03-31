@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   View,
+  Image,
   Text,
   FlatList,
   StyleSheet,
@@ -47,21 +48,24 @@ class SessionComponent extends Component {
           onPress={() =>
             navigate("SessionInfo", {
               sessionId: item.id,
-              sessions: this.props.sessions,
-              members: this.props.members,
-              reservations: this.props.reservations,
+              sessionDate: sessionDate,
             })
           }
+          style={styles.sessionView}
         >
-          <Text>{sessionDate}</Text>
-          <Text>{item.type}</Text>
+          <Text style={styles.sessionBodyText}>{sessionDate}</Text>
+          <Text style={styles.sessionBodyText}>{item.type}</Text>
         </TouchableOpacity>
       );
     };
 
     return (
       <View>
-        <Text>Upcoming Sessions</Text>
+        <Image
+          style={styles.backgroundImage}
+          source={require("../assets/fence.jpg")}
+        />
+        <Text style={styles.sessionHeaderText}>Upcoming Sessions</Text>
         <FlatList
           data={this.props.sessions}
           renderItem={renderSession}
@@ -79,13 +83,16 @@ const styles = StyleSheet.create({
     left: -200,
     bottom: 0,
     right: 0,
+    opacity: 0.9,
   },
   sessionView: {
     justifyContent: "center",
-    minWidth: 300,
+    alignSelf: "center",
+    width: 300,
     margin: 5,
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 5,
+    backgroundColor: "red",
   },
   sessionHeader: {
     flexDirection: "row",
@@ -93,20 +100,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   sessionHeaderText: {
-    fontSize: 20,
+    fontSize: 32,
     color: "white",
-    flex: 7,
     textAlign: "center",
+    marginBottom: 10,
   },
   sessionBodyText: {
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 10,
-  },
-  sessionComponent: {
-    flex: 1,
-    alignItems: "center",
   },
   sessionComponentHeader: {
     color: "white",

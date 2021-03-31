@@ -9,7 +9,7 @@ const CheckIn = ({ session, reservations }) => {
   if (reservations.filter((item) => item.memberId === "10")[0]) {
     return (
       <View>
-        <Text>You are already registered for this session!</Text>
+        <Text>Thank you for registering for this session!</Text>
         <Button
           onPress={() =>
             dispatch({

@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { Text, View, FlatList, StyleSheet } from "react-native";
 
 function MemberClassList({ reservations, members }) {
@@ -8,8 +9,12 @@ function MemberClassList({ reservations, members }) {
     )[0];
 
     return (
-      <View>
-        <Text style={{ color: "white" }}>
+      <View style={styles.memberView}>
+        <Image
+          source={require("../Shared/CatchMaskWhite_1.png")}
+          style={styles.mask}
+        />
+        <Text style={styles.rosterText}>
           {member.firstName} {member.lastName}
         </Text>
       </View>
@@ -37,6 +42,22 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     color: "white",
     fontSize: 24,
+    marginBottom: 12,
+  },
+  rosterText: {
+    color: "white",
+    marginLeft: 7,
+    fontSize: 18,
+  },
+  mask: {
+    height: 20,
+    width: 20,
+    marginLeft: 25,
+  },
+  memberView: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 3,
   },
 });
 

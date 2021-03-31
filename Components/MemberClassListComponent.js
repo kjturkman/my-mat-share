@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, FlatList } from "react-native";
+import { Text, View, FlatList, StyleSheet } from "react-native";
 
 function MemberClassList({ reservations, members }) {
   const renderMember = ({ item }) => {
@@ -9,7 +9,7 @@ function MemberClassList({ reservations, members }) {
 
     return (
       <View>
-        <Text>
+        <Text style={{ color: "white" }}>
           {member.firstName} {member.lastName}
         </Text>
       </View>
@@ -17,8 +17,8 @@ function MemberClassList({ reservations, members }) {
   };
 
   return (
-    <View>
-      <Text>Current session roster:</Text>
+    <View style={styles.container}>
+      <Text style={styles.rosterHeader}>Current session roster:</Text>
       <FlatList
         data={reservations}
         renderItem={renderMember}
@@ -27,4 +27,17 @@ function MemberClassList({ reservations, members }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 15,
+    height: 900,
+  },
+  rosterHeader: {
+    alignSelf: "center",
+    color: "white",
+    fontSize: 24,
+  },
+});
+
 export default MemberClassList;

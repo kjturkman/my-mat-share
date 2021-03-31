@@ -18,20 +18,21 @@ function RenderSession({ session, members, reservations, sessionDate }) {
   );
   let sessionDay = sessionDate.substring(0, 10);
   let sessionTime = sessionDate.substring(12, 18);
+  let image = session.image;
   return (
-    <View>
-      <ImageBackground
-        source={require("../Shared/kickboxing.jpg")}
-        style={styles.subheader}
-      >
+    <View style={styles.container}>
+      <Image
+        style={styles.backgroundImage}
+        source={require("../assets/fence.jpg")}
+      />
+      <ImageBackground source={image} style={styles.subheader}>
         <View>
           <Text style={styles.headerText}>{sessionDay}</Text>
           <Text style={styles.headerText}>{sessionTime}</Text>
         </View>
       </ImageBackground>
-      <Text>
-        {session.type} with {session.instructor}
-      </Text>
+      <Text style={styles.sessionTitle}>{session.type}</Text>
+      <Text style={styles.sessionInstructor}>with {session.instructor}</Text>
       <CheckIn session={session} reservations={sessionReservations} />
       <MemberClassList reservations={sessionReservations} members={members} />
     </View>
@@ -64,16 +65,41 @@ class SessionInfo extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "black",
+  },
   subheader: {
-    height: 200,
+    height: 100,
     justifyContent: "center",
-    alignItems: "center",
+    marginBottom: 20,
   },
   headerText: {
     fontSize: 32,
     color: "red",
     fontWeight: "bold",
     alignSelf: "center",
+    textShadowColor: "white",
+    textShadowRadius: 9,
+  },
+  sessionTitle: {
+    fontSize: 28,
+    color: "white",
+    alignSelf: "center",
+    fontWeight: "bold",
+  },
+  sessionInstructor: {
+    fontSize: 24,
+    color: "white",
+    alignSelf: "center",
+    marginBottom: 20,
+  },
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    left: -200,
+    bottom: 0,
+    right: 0,
+    opacity: 0.5,
   },
 });
 

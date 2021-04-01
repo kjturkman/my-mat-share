@@ -53,6 +53,7 @@ class SessionComponent extends Component {
         (x) => x.sessionId === item.sessionId
       );
       let spotsOpen = item.capacity - itemRes.length;
+      let includesMe = itemRes.filter((x) => x.memberId === "10");
 
       return (
         <Animatable.View animation="fadeInUpBig" duration={5000}>
@@ -65,7 +66,10 @@ class SessionComponent extends Component {
             }
             style={styles.sessionView}
           >
-            <LinearGradient colors={["rgba(255,0,0,0.7)", "transparent"]}>
+            <LinearGradient
+              style={{ borderRadius: 5 }}
+              colors={["rgba(255,0,0,0.7)", "transparent"]}
+            >
               <View style={styles.sessionHeader}>
                 <Text style={styles.sessionBodyText}>
                   {cropDate} -{" "}
@@ -73,10 +77,21 @@ class SessionComponent extends Component {
                 </Text>
                 <Badge
                   value={spotsOpen}
-                  containerStyle={{ position: "absolute", top: 10, right: 10 }}
-                  badgeStyle={{ padding: 2 }}
-                  textStyle={{ fontSize: 12 }}
-                  status={spotsOpen ? "success" : "danger"}
+                  containerStyle={{ position: "absolute", top: 25, right: -14 }}
+                  badgeStyle={{ padding: 3 }}
+                  textStyle={{
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    fontFamily: "Roboto",
+                    color: spotsOpen ? "black" : "white",
+                  }}
+                  status={
+                    includesMe.length
+                      ? "primary"
+                      : spotsOpen
+                      ? "success"
+                      : "error"
+                  }
                 />
               </View>
               <Text style={styles.sessionBodyText2}>{item.type}</Text>
@@ -121,7 +136,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 300,
     margin: 5,
-    padding: 5,
+    padding: 3,
     borderRadius: 5,
     backgroundColor: "black",
   },

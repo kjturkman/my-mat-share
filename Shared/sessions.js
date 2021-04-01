@@ -6,7 +6,7 @@ export const SESSIONS = [
     type: "Kickboxing",
     image: "../Shared/kickboxing.jpg",
     instructor: "Coach Jeff",
-    capacity: 12,
+    capacity: 10,
   },
   {
     id: 1,
@@ -15,7 +15,7 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     image: "./nogijiujitsu.jpg",
     instructor: "Coach Zach",
-    capacity: 12,
+    capacity: 10,
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const SESSIONS = [
     type: "Kickboxing",
     image: "./Shared/kickboxing.jpg",
     instructor: "Coach Jeff",
-    capacity: 12,
+    capacity: 10,
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     image: "./Shared/nogijiujitsu.jpg",
     instructor: "Coach Zach",
-    capacity: 12,
+    capacity: 10,
   },
   {
     id: 5,
@@ -60,7 +60,7 @@ export const SESSIONS = [
     type: "Kickboxing",
     image: "./Shared/kickboxing.jpg",
     instructor: "Coach Jeff",
-    capacity: 12,
+    capacity: 10,
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ export const SESSIONS = [
     type: "Nogi Jiu Jitsu",
     image: "./Shared/nogijiujitsu.jpg",
     instructor: "Coach Zach",
-    capacity: 12,
+    capacity: 10,
   },
   {
     id: 8,

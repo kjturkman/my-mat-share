@@ -10,6 +10,7 @@ import {
 import { connect } from "react-redux";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
+import { Badge } from "react-native-elements";
 
 const mapStateToProps = (state) => {
   return {
@@ -48,6 +49,11 @@ class SessionComponent extends Component {
       }
       const sessionDate = `${cropDate}, ${cropTime}`;
 
+      let itemRes = this.props.reservations.filter(
+        (x) => x.sessionId === item.sessionId
+      );
+      let spotsOpen = item.capacity - itemRes.length;
+
       return (
         <Animatable.View animation="fadeInUpBig" duration={5000}>
           <TouchableOpacity
@@ -60,10 +66,19 @@ class SessionComponent extends Component {
             style={styles.sessionView}
           >
             <LinearGradient colors={["rgba(255,0,0,0.7)", "transparent"]}>
-              <Text style={styles.sessionBodyText}>
-                {cropDate} -{" "}
-                <Text style={{ fontWeight: "bold" }}>{cropTime}</Text>
-              </Text>
+              <View style={styles.sessionHeader}>
+                <Text style={styles.sessionBodyText}>
+                  {cropDate} -{" "}
+                  <Text style={{ fontWeight: "bold" }}>{cropTime}</Text>
+                </Text>
+                <Badge
+                  value={spotsOpen}
+                  containerStyle={{ position: "absolute", top: 10, right: 10 }}
+                  badgeStyle={{ padding: 2 }}
+                  textStyle={{ fontSize: 12 }}
+                  status={spotsOpen ? "success" : "danger"}
+                />
+              </View>
               <Text style={styles.sessionBodyText2}>{item.type}</Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -112,8 +127,8 @@ const styles = StyleSheet.create({
   },
   sessionHeader: {
     flexDirection: "row",
-    flex: 1,
     alignItems: "center",
+    justifyContent: "space-around",
   },
   sessionHeaderText: {
     fontSize: 32,

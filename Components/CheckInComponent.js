@@ -22,10 +22,10 @@ const CheckIn = ({ session, reservations }) => {
     return (
       <View style={styles.container}>
         <Animatable.View
-          animation="rubberBand"
+          animation="tada"
           duration={1000}
           iterationCount="infinite"
-          iterationDelay={1500}
+          iterationDelay={1000}
         >
           <Text style={styles.tapCancel}>See you in class!</Text>
         </Animatable.View>
@@ -47,6 +47,7 @@ const CheckIn = ({ session, reservations }) => {
       <Animatable.View
         animation={pulse}
         iterationCount="infinite"
+        iterationDelay={1000}
         duration={2000}
       >
         <Text style={styles.sessionFull}>Session is full!</Text>
@@ -83,26 +84,26 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   tapReserve: {
-    fontSize: 18,
-    color: "green",
+    fontSize: 24,
+    color: "#20833E",
     alignSelf: "center",
     marginBottom: 8,
     fontWeight: "bold",
   },
   tapCancel: {
-    fontSize: 20,
+    fontSize: 24,
     color: "blue",
     alignSelf: "center",
     marginBottom: 8,
     fontWeight: "bold",
   },
   container: {
-    width: 175,
+    width: 225,
     alignSelf: "center",
   },
   buttonOss: {
     alignSelf: "center",
-    backgroundColor: "green",
+    backgroundColor: "#20833E",
     width: 175,
     height: 40,
     borderRadius: 8,

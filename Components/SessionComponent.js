@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import * as Animatable from "react-native-animatable";
+import { LinearGradient } from "expo-linear-gradient";
 
 const mapStateToProps = (state) => {
   return {
@@ -42,10 +43,13 @@ class SessionComponent extends Component {
       d.setMinutes(minutes);
       let cropDate = d.toString().substring(0, 10);
       let cropTime = d.toString().substring(16, 21);
+      if (cropTime[0] === "0") {
+        cropTime = cropTime.substring(1, 5);
+      }
       const sessionDate = `${cropDate}, ${cropTime}`;
 
       return (
-        <Animatable.View animation="zoomInUp" duration={4000}>
+        <Animatable.View animation="fadeInUpBig" duration={5000}>
           <TouchableOpacity
             onPress={() =>
               navigate("SessionInfo", {
@@ -55,20 +59,25 @@ class SessionComponent extends Component {
             }
             style={styles.sessionView}
           >
-            <Text style={styles.sessionBodyText}>{sessionDate}</Text>
-            <Text style={styles.sessionBodyText}>{item.type}</Text>
+            <LinearGradient colors={["rgba(255,0,0,0.7)", "transparent"]}>
+              <Text style={styles.sessionBodyText}>
+                {cropDate} -{" "}
+                <Text style={{ fontWeight: "bold" }}>{cropTime}</Text>
+              </Text>
+              <Text style={styles.sessionBodyText2}>{item.type}</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </Animatable.View>
       );
     };
 
     return (
-      <View>
+      <View style={styles.container}>
         <Image
           style={styles.backgroundImage}
           source={require("../assets/fence.jpg")}
         />
-        <Text style={styles.sessionHeaderText}>Upcoming Sessions</Text>
+        <Text style={styles.sessionHeaderText}>UPCOMING SESSIONS:</Text>
         <FlatList
           data={this.props.sessions}
           renderItem={renderSession}
@@ -80,13 +89,17 @@ class SessionComponent extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 50,
+    backgroundColor: "black",
+  },
   backgroundImage: {
     position: "absolute",
     top: 0,
     left: -200,
     bottom: 0,
     right: 0,
-    opacity: 0.9,
+    opacity: 0.5,
   },
   sessionView: {
     justifyContent: "center",
@@ -95,7 +108,7 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     borderRadius: 5,
-    backgroundColor: "red",
+    backgroundColor: "black",
   },
   sessionHeader: {
     flexDirection: "row",
@@ -104,14 +117,23 @@ const styles = StyleSheet.create({
   },
   sessionHeaderText: {
     fontSize: 32,
-    color: "white",
+    color: "#c4c1c0",
+    fontWeight: "bold",
+    fontFamily: "sans-serif-condensed",
     textAlign: "center",
     marginBottom: 10,
   },
   sessionBodyText: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Roboto",
     textAlign: "center",
+    color: "#c4c1c0",
+  },
+  sessionBodyText2: {
+    fontSize: 30,
+    fontFamily: "sans-serif-medium",
+    textAlign: "center",
+    color: "white",
   },
   sessionComponentHeader: {
     color: "white",

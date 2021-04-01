@@ -75,11 +75,11 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 32,
-    color: "red",
+    color: "#E02929",
     fontWeight: "bold",
     alignSelf: "center",
     textShadowColor: "white",
-    textShadowRadius: 9,
+    textShadowRadius: 7,
   },
   sessionTitle: {
     fontSize: 28,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   sessionInstructor: {
     fontSize: 24,
-    color: "white",
+    color: "#c4c1c0",
     alignSelf: "center",
     marginBottom: 20,
   },

@@ -10,7 +10,7 @@ function MemberClassList({ reservations, members }) {
     )[0];
 
     return (
-      <Animatable.View animation="fadeInRight" duration={2000}>
+      <Animatable.View animation="fadeInRightBig" duration={2000}>
         <View style={styles.memberView}>
           <Image
             source={require("../Shared/CatchMaskWhite_1.png")}
@@ -26,7 +26,7 @@ function MemberClassList({ reservations, members }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.rosterHeader}>Current session roster:</Text>
+      <Text style={styles.rosterHeader}>CONFIRMED STUDENTS:</Text>
       <FlatList
         data={reservations}
         renderItem={renderMember}
@@ -43,9 +43,11 @@ const styles = StyleSheet.create({
   },
   rosterHeader: {
     alignSelf: "center",
-    color: "white",
+    color: "#c4c1c0",
     fontSize: 24,
+    fontFamily: "sans-serif-condensed",
     marginBottom: 12,
+    fontWeight: "bold",
   },
   rosterText: {
     color: "white",

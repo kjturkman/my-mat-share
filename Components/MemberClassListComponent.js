@@ -1,6 +1,7 @@
 import React from "react";
 import { Image } from "react-native";
 import { Text, View, FlatList, StyleSheet } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 function MemberClassList({ reservations, members }) {
   const renderMember = ({ item }) => {
@@ -9,15 +10,17 @@ function MemberClassList({ reservations, members }) {
     )[0];
 
     return (
-      <View style={styles.memberView}>
-        <Image
-          source={require("../Shared/CatchMaskWhite_1.png")}
-          style={styles.mask}
-        />
-        <Text style={styles.rosterText}>
-          {member.firstName} {member.lastName}
-        </Text>
-      </View>
+      <Animatable.View animation="fadeInRight" duration={2000}>
+        <View style={styles.memberView}>
+          <Image
+            source={require("../Shared/CatchMaskWhite_1.png")}
+            style={styles.mask}
+          />
+          <Text style={styles.rosterText}>
+            {member.firstName} {member.lastName}
+          </Text>
+        </View>
+      </Animatable.View>
     );
   };
 
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
   mask: {
     height: 20,
     width: 20,
-    marginLeft: 25,
+    marginLeft: 45,
   },
   memberView: {
     flexDirection: "row",

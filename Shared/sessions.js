@@ -2,7 +2,7 @@ export const SESSIONS = [
   {
     id: 0,
     sessionId: "0",
-    date: "20210401T07:00:00",
+    date: "20210301T07:00:00",
     type: "Kickboxing",
     image: "../Shared/kickboxing.jpg",
     instructor: "Coach Jeff",
@@ -11,7 +11,7 @@ export const SESSIONS = [
   {
     id: 1,
     sessionId: "1",
-    date: "20210401T12:15:00",
+    date: "20210301T12:15:00",
     type: "Nogi Jiu Jitsu",
     image: "./nogijiujitsu.jpg",
     instructor: "Coach Zach",
@@ -20,7 +20,7 @@ export const SESSIONS = [
   {
     id: 2,
     sessionId: "2",
-    date: "20210401T19:00:00",
+    date: "20210301T19:00:00",
     type: "Brazilian Jiu Jitsu",
     image: "./Shared/gijiujitsu.jpg",
     instructor: "Coach Omar",
@@ -29,7 +29,7 @@ export const SESSIONS = [
   {
     id: 3,
     sessionId: "3",
-    date: "20210402T07:00:00",
+    date: "20210302T07:00:00",
     type: "Kickboxing",
     image: "./Shared/kickboxing.jpg",
     instructor: "Coach Jeff",
@@ -38,7 +38,7 @@ export const SESSIONS = [
   {
     id: 4,
     sessionId: "4",
-    date: "20210402T12:15:00",
+    date: "20210302T12:15:00",
     type: "Nogi Jiu Jitsu",
     image: "./Shared/nogijiujitsu.jpg",
     instructor: "Coach Zach",
@@ -47,7 +47,7 @@ export const SESSIONS = [
   {
     id: 5,
     sessionId: "5",
-    date: "20210402T19:00:00",
+    date: "20210302T19:00:00",
     type: "Brazilian Jiu Jitsu",
     image: "./Shared/gijiujitsu.jpg",
     instructor: "Coach Omar",
@@ -56,7 +56,7 @@ export const SESSIONS = [
   {
     id: 6,
     sessionId: "6",
-    date: "20210403T07:00:00",
+    date: "20210303T07:00:00",
     type: "Kickboxing",
     image: "./Shared/kickboxing.jpg",
     instructor: "Coach Jeff",
@@ -65,7 +65,7 @@ export const SESSIONS = [
   {
     id: 7,
     sessionId: "7",
-    date: "20210403T12:15:00",
+    date: "20210303T12:15:00",
     type: "Nogi Jiu Jitsu",
     image: "./Shared/nogijiujitsu.jpg",
     instructor: "Coach Zach",
@@ -74,7 +74,7 @@ export const SESSIONS = [
   {
     id: 8,
     sessionId: "8",
-    date: "20210403T19:00:00",
+    date: "20210303T19:00:00",
     type: "Brazilian Jiu Jitsu",
     image: "./Shared/gijiujitsu.jpg",
     instructor: "Coach Omar",

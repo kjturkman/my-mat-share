@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
+import * as Animatable from "react-native-animatable";
 
 const mapStateToProps = (state) => {
   return {
@@ -30,7 +31,7 @@ class SessionComponent extends Component {
     const { navigate } = this.props.navigation;
     const renderSession = ({ item }) => {
       const date = item.date;
-      let month = parseInt(date.substring(4, 6) - 1, 10);
+      let month = parseInt(date.substring(4, 6), 10);
       let day = parseInt(date.substring(6, 8), 10);
       let hours = parseInt(date.substring(9, 11), 10);
       let minutes = parseInt(date.substring(12, 14), 10);
@@ -44,18 +45,20 @@ class SessionComponent extends Component {
       const sessionDate = `${cropDate}, ${cropTime}`;
 
       return (
-        <TouchableOpacity
-          onPress={() =>
-            navigate("SessionInfo", {
-              sessionId: item.id,
-              sessionDate: sessionDate,
-            })
-          }
-          style={styles.sessionView}
-        >
-          <Text style={styles.sessionBodyText}>{sessionDate}</Text>
-          <Text style={styles.sessionBodyText}>{item.type}</Text>
-        </TouchableOpacity>
+        <Animatable.View animation="zoomInUp" duration={4000}>
+          <TouchableOpacity
+            onPress={() =>
+              navigate("SessionInfo", {
+                sessionId: item.id,
+                sessionDate: sessionDate,
+              })
+            }
+            style={styles.sessionView}
+          >
+            <Text style={styles.sessionBodyText}>{sessionDate}</Text>
+            <Text style={styles.sessionBodyText}>{item.type}</Text>
+          </TouchableOpacity>
+        </Animatable.View>
       );
     };
 

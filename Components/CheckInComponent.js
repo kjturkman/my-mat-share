@@ -1,16 +1,34 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Button } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import * as ActionTypes from "../redux/ActionTypes";
+import * as Animatable from "react-native-animatable";
 
 const CheckIn = ({ session, reservations }) => {
   const dispatch = useDispatch();
+  const pulse = {
+    0: {
+      scale: 1,
+    },
+    0.5: {
+      scale: 1.3,
+    },
+    1: {
+      scale: 1,
+    },
+  };
 
   if (reservations.filter((item) => item.memberId === "10")[0]) {
     return (
       <View style={styles.container}>
-        <Text style={styles.tapCancel}>See you in class!</Text>
+        <Animatable.View
+          animation="rubberBand"
+          duration={1000}
+          iterationCount="infinite"
+          iterationDelay={1500}
+        >
+          <Text style={styles.tapCancel}>See you in class!</Text>
+        </Animatable.View>
         <TouchableOpacity
           onPress={() =>
             dispatch({
@@ -25,7 +43,15 @@ const CheckIn = ({ session, reservations }) => {
       </View>
     );
   } else if (!(session.capacity - reservations.length)) {
-    return <Text style={styles.sessionFull}>Sorry, session is full!</Text>;
+    return (
+      <Animatable.View
+        animation={pulse}
+        iterationCount="infinite"
+        duration={2000}
+      >
+        <Text style={styles.sessionFull}>Session is full!</Text>
+      </Animatable.View>
+    );
   }
 
   return (
@@ -37,7 +63,13 @@ const CheckIn = ({ session, reservations }) => {
         }
         style={styles.buttonOss}
       >
-        <Text style={styles.buttonText}>OSS!</Text>
+        <Animatable.View
+          animation="flash"
+          iterationCount="infinite"
+          iterationDelay={1500}
+        >
+          <Text style={styles.buttonText}>OSS!</Text>
+        </Animatable.View>
       </TouchableOpacity>
     </View>
   );
